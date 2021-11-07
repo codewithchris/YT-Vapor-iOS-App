@@ -23,4 +23,26 @@ class SongListViewModel: ObservableObject {
             self.songs = songResponse
         }
     }
+    
+    func delete(at offsets: IndexSet) {
+        offsets.forEach { i in
+            guard let songID = songs[i].id else {
+                return
+            }
+            
+            guard let url = URL(string: Constants.baseURL + Endpoints.songs + "/\(songID)") else {
+                return
+            }
+            
+            Task {
+                do {
+                    try await HttpClient.shared.delete(at: songID, url: url)
+                } catch {
+                    print("❌ error: \(error)")
+                }
+            }
+        }
+        
+        songs.remove(atOffsets: offsets)
+    }
 }

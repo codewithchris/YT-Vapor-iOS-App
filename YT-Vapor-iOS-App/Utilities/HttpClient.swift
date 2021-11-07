@@ -56,4 +56,15 @@ class HttpClient {
             throw HttpError.badResponse
         }
     }
+    
+    func delete(at id: UUID, url: URL) async throws {
+        var request = URLRequest(url: url)
+        request.httpMethod = HttpMethods.DELETE.rawValue
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw HttpError.badResponse
+        }
+    }
 }
