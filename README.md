@@ -1,6 +1,6 @@
 # YouTube Vapor iOS App
 
-[Video link here](https://youtu.be/TyigCzPoLak)
+[Video link here](https://youtu.be/2JuqhabkAT8)
 
-# Lesson 3
-We create our SwiftUI iOS app and use async/await to make network requests to our custom Vapor API
+# Lesson 5
+Deploy the Vapor API to Heroku
